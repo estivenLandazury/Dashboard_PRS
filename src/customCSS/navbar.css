@@ -1,0 +1,14 @@
+img.prescriptiva_logo {
+    width: 9%;
+}
+
+button#user-date {
+    color: #fff;
+    background-color: #041160;
+    border-color: #f8f9fa;
+    margin-left: -37%;
+}
+
+.bg-light {
+    background-color: #041160!important;
+}
