@@ -37,7 +37,7 @@ class search extends Component {
 
             estado: true,
             startDate: new Date(),
-            URL: "http://172.19.15.21:5000/",
+            URL: "http://192.168.96.37:5002/",
             loader: true,
 
             /** Search normal */
@@ -56,27 +56,30 @@ class search extends Component {
 
     componentDidMount() {
         console.log("REDUX STATE " + this.props.search1)
-        console.log("REDUX STATE " + this.state.startDate)
-        console.log("REDUX STATE " + this.state.Ubication)
+        console.log("REDUX Date " + this.state.startDate)
+        console.log("REDUX Ubicacion " + this.state.Ubication)
 
 
     }
 
-    inputsearch_1() {
+    inputsearch_1(e) {
 
-        var valor = document.getElementById('exampleFormControlInput1').value
+        console.log("Valor search " + e.target.value)
 
-        this.props.cambiarInputsearch_1(valor)
+
+        this.props.cambiarInputsearch_1(e.target.value)
 
         /* this.setState({
              keyWord: e.target.value
          })*/
     }
 
-    inputsearch() {
-
-        var valor = document.getElementById('inputPassword').value
-        this.props.cambiarEstado(valor)
+    inputsearch(e) {
+        /** 
+                var valor = document.getElementById('inputPassword').value
+                console.log("valor inputsearch " + valor)
+                */
+        this.props.cambiarEstado(e.target.value)
         /*this.setState({
             search: e.target.value
         })
@@ -157,7 +160,7 @@ class search extends Component {
         } else {
             return <div className="loader">
                 <Loader type="BallTriangle" color="#00BFFF" height={100} width={100} > </Loader>
-                <h1 className="Loader">Enviando información</h1>
+                <h1 className="Loader">Analizando Información...</h1>
             </div>
 
 
@@ -169,79 +172,78 @@ class search extends Component {
 
     }
 
+    /*
+        controlSendInfo_1() {
+            this.inputsearch_1();
+            const that = this
+    
+    
+            var promise = Promise.resolve(that.sendInfo_1(that))
+            this.setState({
+                loader: false
+            })
+    
+            promise.then(function () {
+    
+                if (that.props.cambio == true) {
+    
+                    setTimeout(() => {
+                        that.setState({
+                            loader: true
+                        })
+                        that.props.cambiarLoader(false)
+    
+                        NotificationManager.success("Success message", "The information was sent successfully", 5000)
+    
+                    }, 3000)
+    
+                }
+    
+            })
+        }
+    
+    */
 
-    controlSendInfo_1() {
-
-        var promise = Promise.resolve(this.sendInfo_1())
-        const that = this
-        this.setState({
-            loader: false
-        })
-
-        this.inputsearch_1()
-
-        promise.then(function () {
-
-            if (that.props.cambio == true) {
-
-                setTimeout(() => {
-                    that.setState({
-                        loader: true
-                    })
-                    that.props.cambiarLoader(false)
-
-                    NotificationManager.success("Success message", "The information was sent successfully", 5000)
-
-                }, 3000)
-
-            }
-
-
-
-
-        })
-    }
-
-
-
-    controlSendInfo() {
-        this.inputsearch()
-        var promise = Promise.resolve(this.sendInfo())
-        const that = this
-        this.setState({
-            loader: true
-        })
-
-        promise.then(function () {
-
-            if (that.props.cambio == true) {
-
-                setTimeout(() => {
-                    that.setState({
-                        loader: false
-                    })
-                    that.props.cambiarLoader(false)
-
-                    NotificationManager.success("Success message", "The information was sent successfully", 5000)
-
-                }, 3000)
-
-            }
-
-
-
-
-        })
-    }
-
-
-
-
+    /*
+ 
+     controlSendInfo() {
+         const that = this
+ 
+         var promise = Promise.resolve(this.sendInfo(that))
+         this.setState({
+             loader: true
+         })
+ 
+         promise.then(function () {
+ 
+             if (that.props.cambio == true) {
+ 
+                 setTimeout(() => {
+                     that.setState({
+                         loader: false
+                     })
+                     that.props.cambiarLoader(false)
+ 
+                     NotificationManager.success("Success message", "The information was sent successfully", 5000)
+ 
+                 }, 3000)
+ 
+             }
+ 
+ 
+ 
+ 
+         })
+     }
+ */
 
 
 
     sendInfo_1() {
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMaxBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "" }
+        console.log("hashtagBusqueda send info " + this.state.Hashtags)
+        console.log("palabra busqueda sen info " + this.props.search)
+
+        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "" }
 
         this.props.cambiarLoader(true)
 
@@ -261,19 +263,25 @@ class search extends Component {
             .then((responseJson) => {
 
 
-                this.props.IndicesGrafica(responseJson)
-
-
+                this.props.IndicesGrafica(responseJson, false)
                 console.log("este es response " + responseJson)
 
 
-            }).catch(error => console.log("error papa"))
+            }).catch(error => NotificationManager.error("Error message", "Connection error verify server", 5000)
+
+                /**   NotificationManager.error("Error message", "Connection error verify server", 5000),
+                */
+
+            )
 
     }
 
     sendInfo() {
 
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMaxBusqueda": this.props.Date, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication }
+        console.log("hashtagBusqueda send info " + this.state.Hashtags)
+        console.log("palabra busqueda sen info " + this.props.search)
+
+        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication }
 
         this.props.cambiarLoader(true)
 
@@ -292,13 +300,17 @@ class search extends Component {
             .then((responseJson) => {
 
 
-                this.props.IndicesGrafica(responseJson)
+                this.props.IndicesGrafica(responseJson, false)
 
 
                 console.log("este es response " + responseJson)
 
 
-            }).catch(error => console.log("error papa"))
+            }).catch(error => console.log("error papa"),
+                /**    NotificationManager.error("Error message", "Connection error verify server", 5000),
+                  */
+
+            )
 
 
     }
@@ -314,10 +326,11 @@ class search extends Component {
             return <div>
                 <form>
                     <div className="form-group">
-                        {/** <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="KeyWord" onChange={e => this.inputsearch_1(e)} />*/}
-                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="KeyWord" />
+                        {/**<input type="email" className="form-control" id="exampleFormControlInput1" placeholder="KeyWord" /> */}
+
+                        <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="KeyWord" onChange={e => this.inputsearch_1(e)} />
                     </div>
-                    <button type="button" className="btn btn-primary" id="Search-button" onClick={this.controlSendInfo_1.bind(this)}>search</button>
+                    <button type="button" className="btn btn-primary" id="Search-button" onClick={this.sendInfo_1.bind(this)}>search</button>
                 </form>
                 <img src={add} className="buttonSearch_logo" id="add" /> <h5 className="keyWord" >New Key word</h5>
 
@@ -335,8 +348,8 @@ class search extends Component {
                         <label for="staticEmail" class="col-sm-2 col-form-label"> <h1 className="labelh1">search  </h1></label>
                         <div className="col-sm-10">
                             {/** <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" onChange={e => this.props.input1(e.target.value)} /> */}
-                            {/**<input type="text" className="form-control" id="inputPassword" placeholder="keyWord" onChange={e => this.inputsearch(e)} />*/}
-                            <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" />
+                            <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" onChange={e => this.inputsearch(e)} />
+                            {/** <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" />*/}
                         </div>
                     </div>
 
@@ -405,7 +418,7 @@ class search extends Component {
                             <DatePicker className="Date-picker" id="dataPicker" selected={this.state.startDate} onChange={this.handleChange} dateFormat="yyyy/MM/dd" maxDate={new Date()} />
                         </div>
                     </div>
-                    <button type="button" className="btn btn-primary" id="Search-button1" onClick={this.controlSendInfo.bind(this)}>search</button>
+                    <button type="button" className="btn btn-primary" id="Search-button1" onClick={this.sendInfo.bind(this)}>search</button>
 
 
                 </form>
@@ -458,7 +471,7 @@ const mapStateProps = state => ({
     keyWord: state.keyWord,
     json: state.json,
     cambio: state.cambio,
-    Date: state.Date
+    Date: state.Date,
 
 })
 
@@ -481,10 +494,11 @@ const mapDispatchToProps = dispactch => ({
     },
 
 
-    IndicesGrafica(e) {
+    IndicesGrafica(e, v) {
         dispactch({
             type: "INDICE_GRAFICA",
-            input: e
+            input: e,
+            camb: v
 
         })
 

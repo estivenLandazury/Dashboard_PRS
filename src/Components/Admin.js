@@ -63,6 +63,10 @@ class admin extends Component {
                                         if (location.pathname !== to) {
                                             history.push(to);
                                         }
+
+
+
+
                                         console.log("Hola " + selected)
                                         // Add your code here
                                     }}
@@ -108,6 +112,7 @@ class admin extends Component {
 
 
                                 <main>
+
                                     <Route path="/home" component={props => <Home />} />
                                     <Route path="/charts" component={props => <Charts search="cosita bien hecha" />} />
                                     <Route path="/Report" component={props => <Report />} />

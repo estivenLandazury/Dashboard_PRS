@@ -7,6 +7,7 @@ const stateInitial = {
 
     /** Data search advanced */
     search: "",
+    searchALterno: "",
     search1: "Developing...",
     Hashtags: "",
     Usernames: "",
@@ -22,12 +23,15 @@ const stateInitial = {
         'Maximo Rt Tendencia Positiva': 1,
         'Maximo Rt Tendencia Negativa': 1,
         'Maximo Rt Muy negativos': 1,
+        'Tweet mas Rt': "",
         'Promedio RT': 1,
         'Mayor Favorito Muy Positivo': 1,
         'Mayor Favorito Tendencia positiva': 1,
         'Mayor Favorito Tendencia Negativa': 1,
         'Mayor Favorito Muy Negativo': 1,
+        'Tweet mas Fv': "",
         'Promedio Favorito': 1,
+        'Hashtags populares': [],
         'Menciones populares': ""
     }
 }
@@ -49,25 +53,26 @@ const reducerSearch = (state = stateInitial, action) => {
 
         return {
             ...state,
-            json: action.input
+            json: action.input,
+            cambio: action.camb
         }
 
     }
 
     else if (action.type == "ESTADO_INPUT_FIRTS") {
+        console.log("desde store input search " + action.input)
 
         return {
             ...state,
             search: action.input,
-            cambio: true
         }
 
     } else if (action.type == "ESTADO_INPUT_FIRTS_1") {
+        console.log("desde store input search " + action.input)
 
         return {
             ...state,
             search: action.input,
-            cambio: true
         }
 
     } else if (action.type == "SET_DATE") {

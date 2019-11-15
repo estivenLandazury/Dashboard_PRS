@@ -11,8 +11,6 @@ class charts extends Component {
 
         super(props);
 
-
-
         this.state = {
 
 
@@ -60,24 +58,24 @@ class charts extends Component {
 
     radar() {
         const data = {
-            labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+            labels: ['Favorito Muy Positivo', 'Favorito Tendencia positiva', 'Favorito Tendencia Negativa', 'Favorito Muy Negativo'],
             datasets: [
 
                 {
-                    label: 'My Second dataset',
+                    label: 'Data Tweet',
                     backgroundColor: 'rgba(255,99,132,0.2)',
                     borderColor: 'rgba(255,99,132,1)',
                     pointBackgroundColor: 'rgba(255,99,132,1)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgba(255,99,132,1)',
-                    data: [28, 48, 40, 19, 96, 27, 100]
+                    data: [this.props.json["Mayor Favorito Muy Positivo"], this.props.json["Mayor Favorito Tendencia positiva"], this.props.json["Mayor Favorito Tendencia Negativa"], this.props.json["Mayor Favorito Muy Negativo"]]
                 }
             ]
         };
 
         return <div>
-            <h2 className="titleGraphic">Trend Analysis {this.props.search}</h2>
+            <h2 className="titleGraphic">Favorite Analysis {this.props.search}</h2>
             <Radar data={data} />
         </div>
 
@@ -87,10 +85,10 @@ class charts extends Component {
 
     line() {
         const data = {
-            labels: ['Muy positivo',
-                'Tendencia positiva',
-                'Tendencia negativa',
-                'Muy negativo'],
+            labels: ['RT Muy positivo',
+                'Rt Tendencia Positiva',
+                'Rt Tendencia Negativa',
+                'Rt Muy negativos'],
             datasets: [
                 {
                     label: 'My First dataset',
@@ -111,13 +109,13 @@ class charts extends Component {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [this.props.json["Muy positivo"], this.props.json["Tendencia positiva"], this.props.json["Tendencia negativa"], this.props.json["Muy negativo"]]
+                    data: [this.props.json["Maximo RT Muy positivo"], this.props.json["Maximo Rt Tendencia Positiva"], this.props.json["Maximo Rt Tendencia Negativa"], this.props.json["Maximo Rt Muy negativos"]]
                 }
             ]
         };
 
         return <div>
-            <h2 className="titleGraphic">Trend Analysis {this.props.search}</h2>
+            <h2 className="titleGraphic">RTweet Analysis {this.props.search}</h2>
             <Line data={data} />
         </div>
     }
@@ -189,7 +187,8 @@ class charts extends Component {
 
 const mapStateProps = state => ({
     json: state.json,
-    search: state.search
+    search: state.search,
+    searchALterno: state.searchALterno
 
 })
 
