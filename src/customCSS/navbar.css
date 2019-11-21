@@ -7,8 +7,17 @@ button#user-date {
     background-color: #041160;
     border-color: #f8f9fa;
     margin-left: -37%;
+    width: auto;
 }
 
 .bg-light {
-    background-color: #041160!important;
+    background-color: #041160 !important;
+}
+
+div#option {
+    margin-left: -93%;
+}
+
+button#redirect {
+    width: auto;
 }

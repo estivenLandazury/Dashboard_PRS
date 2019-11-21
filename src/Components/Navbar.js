@@ -21,7 +21,19 @@ class navbar extends Component {
         }
     }
 
+    singOut() {
+        localStorage.clear();
+        window.location.href = '/login'
+        console.log("Ya salimos")
+    }
+
     render() {
+
+        const js = localStorage.getItem('datos');
+        const vl = JSON.parse(js)
+        console.log("conversion " + vl)
+        console.log("storage" + vl['nombre'])
+
         return (
 
             <div>
@@ -39,8 +51,16 @@ class navbar extends Component {
 
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
+                            <div class="dropdown">
+                                <button className="btn btn-primary dropdown-toggle" id="user-date" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {vl['nombre'].trim()}
+                                </button>
 
-                            <button type="button" id="user-date" className="btn btn-primary"> <FaUserAlt>  </FaUserAlt> Camilo Charria</button>
+                                <div className="dropdown-menu" id="option" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#" onClick={this.singOut.bind(this)}>Sign-out</a>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </nav>

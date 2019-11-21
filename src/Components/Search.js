@@ -37,7 +37,9 @@ class search extends Component {
 
             estado: true,
             startDate: new Date(),
-            URL: "http://192.168.96.37:5002/",
+            /* URL: "http://192.168.96.37:5002/",*/
+            URL: "http://172.19.15.30:5002/",
+
             loader: true,
 
             /** Search normal */
@@ -58,6 +60,13 @@ class search extends Component {
         console.log("REDUX STATE " + this.props.search1)
         console.log("REDUX Date " + this.state.startDate)
         console.log("REDUX Ubicacion " + this.state.Ubication)
+        const js = localStorage.getItem('datos');
+        const vl = JSON.parse(js)
+        console.log("dddddddddddddd" + js)
+
+        console.log("dddddddddddddd" + vl['hotmail'])
+
+
 
 
     }
@@ -172,78 +181,16 @@ class search extends Component {
 
     }
 
-    /*
-        controlSendInfo_1() {
-            this.inputsearch_1();
-            const that = this
-    
-    
-            var promise = Promise.resolve(that.sendInfo_1(that))
-            this.setState({
-                loader: false
-            })
-    
-            promise.then(function () {
-    
-                if (that.props.cambio == true) {
-    
-                    setTimeout(() => {
-                        that.setState({
-                            loader: true
-                        })
-                        that.props.cambiarLoader(false)
-    
-                        NotificationManager.success("Success message", "The information was sent successfully", 5000)
-    
-                    }, 3000)
-    
-                }
-    
-            })
-        }
-    
-    */
-
-    /*
- 
-     controlSendInfo() {
-         const that = this
- 
-         var promise = Promise.resolve(this.sendInfo(that))
-         this.setState({
-             loader: true
-         })
- 
-         promise.then(function () {
- 
-             if (that.props.cambio == true) {
- 
-                 setTimeout(() => {
-                     that.setState({
-                         loader: false
-                     })
-                     that.props.cambiarLoader(false)
- 
-                     NotificationManager.success("Success message", "The information was sent successfully", 5000)
- 
-                 }, 3000)
- 
-             }
- 
- 
- 
- 
-         })
-     }
- */
 
 
 
     sendInfo_1() {
         console.log("hashtagBusqueda send info " + this.state.Hashtags)
         console.log("palabra busqueda sen info " + this.props.search)
+        const js = localStorage.getItem('datos');
+        const vl = JSON.parse(js)
 
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "" }
+        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "", "correo": vl['hotmail'] }
 
         this.props.cambiarLoader(true)
 
@@ -264,24 +211,35 @@ class search extends Component {
 
 
                 this.props.IndicesGrafica(responseJson, false)
-                console.log("este es response " + responseJson)
+                NotificationManager.success("Success message", "Se ha generado el reporte correctamente", 5000)
 
 
-            }).catch(error => NotificationManager.error("Error message", "Connection error verify server", 5000)
 
-                /**   NotificationManager.error("Error message", "Connection error verify server", 5000),
-                */
 
+
+
+            }).catch(function (error) {
+                NotificationManager.error("Error message", "Connection error verify server", 5000)
+                this.props.cambiarLoader(false)
+                console.log("Opa vv")
+
+            }
             )
 
     }
 
+
+
+
+
     sendInfo() {
+        const js = localStorage.getItem('datos');
+        const vl = JSON.parse(js)
 
         console.log("hashtagBusqueda send info " + this.state.Hashtags)
         console.log("palabra busqueda sen info " + this.props.search)
 
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication }
+        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication, "correo": vl['hotmail'] }
 
         this.props.cambiarLoader(true)
 
@@ -300,13 +258,25 @@ class search extends Component {
             .then((responseJson) => {
 
 
-                this.props.IndicesGrafica(responseJson, false)
 
 
                 console.log("este es response " + responseJson)
 
+                NotificationManager.error("Error message", "No se ha logrado Compleytar el analisis", 5000)
+                this.props.cambiarLoader(false)
 
-            }).catch(error => console.log("error papa"),
+
+
+
+
+
+            }).catch(function (error) {
+                NotificationManager.error("Error message", "Connection error verify server", 5000)
+                this.props.cambiarLoader(false)
+                console.log("Opa vv")
+
+            }
+
                 /**    NotificationManager.error("Error message", "Connection error verify server", 5000),
                   */
 

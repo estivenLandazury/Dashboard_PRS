@@ -45,84 +45,112 @@ class admin extends Component {
     }
 
 
+    openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+    home() {
+        window.location.href = '/home'
+
+
+    }
+
+
 
 
 
     render() {
         return (
-            <Provider store={Store}>
-                <div>
+            <div>
+                {/**
 
-
-                    <BrowserRouter>
-                        <Route render={({ location, history }) => (
-                            <React.Fragment>
-                                <SideNav
-                                    onSelect={(selected) => {
-                                        const to = '/' + selected;
-                                        if (location.pathname !== to) {
-                                            history.push(to);
-                                        }
-
-
-
-
-                                        console.log("Hola " + selected)
-                                        // Add your code here
-                                    }}
-                                >
-                                    <SideNav.Toggle />
-                                    <SideNav.Nav defaultSelected="home">
-                                        <NavItem eventKey="home">
-                                            <NavIcon>
-                                                <img src={home} className="home-logo" alt="home" />
-
-                                            </NavIcon>
-                                            <NavText>
-                                                <h5 className="Titlle">Home </h5>
-                                            </NavText>
-                                        </NavItem>
-                                        <NavItem eventKey="charts">
-                                            <NavIcon>
-                                                <img src={chart} className="home-logo" alt="chart" />
-
-                                            </NavIcon>
-                                            <NavText>
-                                                <h5 className="Titlle">Charts </h5>
-
-
-                                            </NavText>
-
-                                        </NavItem>
-
-                                        <NavItem eventKey="Report">
-                                            <NavIcon>
-                                                <img src={docs} className="home-logo" alt="chart" />
-
-                                            </NavIcon>
-                                            <NavText>
-                                                <h5 className="Titlle">Report </h5>
-
-
-
-                                            </NavText>
-                                        </NavItem>
-                                    </SideNav.Nav>
-                                </SideNav>
-
-
-                                <main>
-
-                                    <Route path="/home" component={props => <Home />} />
-                                    <Route path="/charts" component={props => <Charts search="cosita bien hecha" />} />
-                                    <Route path="/Report" component={props => <Report />} />
-
-                                </main>
-                            </React.Fragment>
-                        )} />
-                    </BrowserRouter>
+                <div id="mySidenav" className="sidenav">
+                    <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav.bind(this)}>&times;</a>
+                    <a href="#" onClick={this.home.bind(this)}>About</a>
+                    <a href="#">Services</a>
+                    <a href="#">Clients</a>
+                    <a href="#">Contact</a>
                 </div>
-            </Provider>
+
+                <h2>Animated Sidenav Example</h2>
+                <p>Click on the element below to open the side navigation menu.</p>
+                <span onClick={this.openNav.bind(this)} >&#9776; open</span>
+    **/}
+
+
+                <BrowserRouter>
+                    <Route render={({ location, history }) => (
+                        <React.Fragment>
+                            <SideNav
+                                onSelect={(selected) => {
+                                    const to = '/' + selected;
+                                    if (location.pathname !== to) {
+                                        history.push(to);
+                                    }
+
+
+
+
+                                    console.log("Hola " + selected)
+                                    // Add your code here
+                                }}
+                            >
+                                <SideNav.Toggle />
+                                <SideNav.Nav defaultSelected="/home">
+                                    <NavItem eventKey="home">
+                                        <NavIcon>
+                                            <img src={home} className="home-logo" alt="home" />
+
+                                        </NavIcon>
+                                        <NavText>
+                                            <h5 className="Titlle">Home </h5>
+                                        </NavText>
+                                    </NavItem>
+                                    <NavItem eventKey="charts">
+                                        <NavIcon>
+                                            <img src={chart} className="home-logo" alt="chart" />
+
+                                        </NavIcon>
+                                        <NavText>
+                                            <h5 className="Titlle">Charts </h5>
+
+
+                                        </NavText>
+
+                                    </NavItem>
+
+                                    <NavItem eventKey="Report">
+                                        <NavIcon>
+                                            <img src={docs} className="home-logo" alt="chart" />
+
+                                        </NavIcon>
+                                        <NavText>
+                                            <h5 className="Titlle">Report </h5>
+
+
+
+                                        </NavText>
+                                    </NavItem>
+                                </SideNav.Nav>
+                            </SideNav>
+
+
+                            <main>
+                                <Route path="/homes" component={props => <Home />} />
+                                <Route exact path="/home" component={props => <Home />} />
+                                <Route path="/charts" component={props => <Charts search="cosita bien hecha" />} />
+                                <Route path="/Report" component={props => <Report />} />
+
+                            </main>
+                        </React.Fragment>
+                    )} />
+                </BrowserRouter>
+
+            </div>
         );
     }
 

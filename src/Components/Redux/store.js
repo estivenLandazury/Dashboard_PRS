@@ -8,6 +8,10 @@ const stateInitial = {
     /** Data search advanced */
     search: "",
     searchALterno: "",
+    nombre: "",
+    correo: "",
+    password: "",
+    password1: "",
     search1: "Developing...",
     Hashtags: "",
     Usernames: "",
@@ -92,6 +96,39 @@ const reducerSearch = (state = stateInitial, action) => {
             ...state,
             cambio: action.input
 
+        }
+
+    } else if (action.type == "cambiarCorreo") {
+
+        return {
+            ...state,
+            correo: action.input
+        }
+
+    }
+    else if (action.type == "cambiarPassword") {
+
+        return {
+            ...state,
+            password: action.input
+        }
+
+    }
+
+    else if (action.type == "cambiarPassword1") {
+
+        return {
+            ...state,
+            password1: action.input
+        }
+
+    }
+
+    else if (action.type == "cambiarNombre") {
+
+        return {
+            ...state,
+            nombre: action.input
         }
 
     }
