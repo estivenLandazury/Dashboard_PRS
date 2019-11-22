@@ -30,11 +30,12 @@ class report extends Component {
     }
 
     componentDidMount() {
-        const js = localStorage.getItem('datos');
-        const vl = JSON.parse(js)
-        console.log("jjjjjj " + vl['nombre'])
-        this.obtainUrls()
-
+        /*
+         const js = localStorage.getItem('datos');
+         const vl = JSON.parse(js)
+         console.log("jjjjjj " + vl['nombre'])
+         this.obtainUrls()
+ */
     }
 
 

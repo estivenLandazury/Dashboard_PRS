@@ -34,34 +34,36 @@ class SocialNetwork extends Component {
         return (
             <div className="network">
                 <h1 className="Social_title"> Social Network</h1>
-                <div className="container" id="container-social">
+                <div className="conta" id="container-social">
                     <div className="row">
                         <div className="col-md-4">
-                            <img src={instagram} className="instagram_logo" />
+                            <img src={instagram} className="social_logo" />
                         </div>
                         <div className="col-md-4">
-                            <img src={twitter} className="twitter_logo" />
+                            <img src={twitter} className="social_logo" />
 
                         </div>
                         <div className="w-60"></div>
                         <div className="col-md-4">
-                            <img src={facebook} className="facebook_logo" />
+                            <img src={facebook} className="social_logo" />
 
                         </div>
                         <div className="col-md-4">
-                            <img src={forum} className="forum_logo" />
+                            <img src={forum} className="social_logo" />
                         </div>
                         <div className="w-60"></div>
                         <div className="col-md-4">
-                            <img src={youtube} className="youtube_logo" />
+                            <img src={youtube} className="social_logo" />
 
                         </div>
                         <div className="col-md-4" >
-                            <img src={linkedlink} className="linkedlink_logo" />
+                            <img src={linkedlink} className="social_logo" />
 
                         </div>
                     </div>
                 </div>
+
+
 
             </div>
 

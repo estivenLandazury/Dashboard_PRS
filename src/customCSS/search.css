@@ -156,3 +156,142 @@ h1.Loader {
     /* float: right; */
     margin-left: 132%;
 }
+
+@media (max-width: 1024px) {
+    div#search-container {
+        width: 223%;
+        margin-top: 6%;
+    }
+    input#inputPassword {
+        width: auto;
+        font-weight: bold;
+    }
+    input#inputPassword3 {
+        width: auto;
+        font-weight: bold;
+    }
+    input#inputPassword2 {
+        width: auto;
+        font-weight: bold;
+    }
+    select#selectWid {
+        width: auto;
+        /* width: 35%; */
+        color: #77757d;
+        font-weight: bold;
+    }
+    input[type=text] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: auto;
+        /* width: auto; */
+        border: 2px solid #f6f6f6;
+        transition: all 0.5s ease-in-out;
+        border-radius: 5px 5px 5px 5px;
+    }
+    button#Search-button1 {
+        width: auto;
+        float: left;
+        background-color: #041160;
+        border-color: white;
+    }
+    div#container-social {
+        width: auto !important;
+        margin-left: -5%;
+        margin-top: 1%;
+    }
+}
+
+@media (max-width: 800px) {
+    div#search-container {
+        width: auto;
+        margin-top: 6%;
+    }
+    .form-group {
+        margin-bottom: 1rem;
+        width: auto;
+        text-align: left;
+    }
+    select#selectWid {
+        width: auto;
+        color: #77757d;
+        font-weight: bold;
+        text-align: center;
+    }
+    input#inputPassword3 {
+        width: auto;
+        font-weight: bold;
+    }
+    input#inputPassword2 {
+        width: auto;
+        font-weight: bold;
+    }
+    input#inputPassword {
+        width: auto;
+        font-weight: bold;
+    }
+    input#dataPicker {
+        width: auto;
+    }
+    .container {
+        margin-top: 13%;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    input#exampleFormControlInput1 {
+        background-color: #b3bae6;
+        height: 55px;
+        font-weight: bold;
+        text-align: left;
+        border-radius: -27%;
+        width: auto;
+        /* color: #2137bf; */
+    }
+    button#Search-button1 {
+        width: auto;
+        float: left;
+        background-color: #041160;
+        border-color: white;
+    }
+    button#Search-button {
+        width: auto;
+        float: left;
+        background-color: #041160;
+        border-color: white;
+    }
+    img.buttonSearch_logo {
+        width: 48%;
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    input#inputPassword3 {
+        width: 94%;
+        font-weight: bold;
+    }
+    input#inputPassword2 {
+        width: 94%;
+        font-weight: bold;
+    }
+    input#inputPassword {
+        width: 94%;
+        font-weight: bold;
+    }
+    button#Search-button {
+        width: auto;
+        float: left;
+        background-color: #041160;
+        border-color: white;
+    }
+}

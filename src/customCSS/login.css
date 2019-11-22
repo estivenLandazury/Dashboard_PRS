@@ -89,9 +89,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button],
-input[type=submit],
-input[type=reset] {
+input[type=button], input[type=submit], input[type=reset] {
     background-color: #56baed;
     border: none;
     color: white;
@@ -113,15 +111,11 @@ input[type=reset] {
     transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover,
-input[type=submit]:hover,
-input[type=reset]:hover {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
     background-color: #39ace7;
 }
 
-input[type=button]:active,
-input[type=submit]:active,
-input[type=reset]:active {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
@@ -215,7 +209,6 @@ h1.load_sign {
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
     }
-
     100% {
         opacity: 1;
         -webkit-transform: none;
@@ -229,7 +222,6 @@ h1.load_sign {
         -webkit-transform: translate3d(0, -100%, 0);
         transform: translate3d(0, -100%, 0);
     }
-
     100% {
         opacity: 1;
         -webkit-transform: none;
@@ -243,7 +235,6 @@ h1.load_sign {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -253,7 +244,6 @@ h1.load_sign {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -263,7 +253,6 @@ h1.load_sign {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -335,4 +324,50 @@ h1.load_sign {
 
 #icon {
     width: 60%;
+}
+
+@media (max-width: 800px) {
+    #formContent {
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-left: 14%;
+        margin-top: 8%;
+        border-radius: 10px 10px 10px 10px;
+        background: #fff;
+        padding: 30px;
+        width: auto;
+        max-width: 450px;
+        position: relative;
+        padding: 0px;
+        box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #041160;
+        border-color: #041160;
+        width: auto;
+    }
+}
+
+@media (max-width: 411px) {
+    #formContent {
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-left: 0%;
+        margin-top: 8%;
+        border-radius: 10px 10px 10px 10px;
+        background: #fff;
+        padding: 30px;
+        width: auto;
+        max-width: 450px;
+        position: relative;
+        padding: 0px;
+        box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #041160;
+        border-color: #041160;
+        width: auto;
+    }
 }

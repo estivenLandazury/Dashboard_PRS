@@ -6,6 +6,8 @@ import Report from './report'
 
 
 import '../customCSS/admin.css'
+import { NavLink } from "react-router-dom";
+
 import home from '../Images/001-home.png'
 import chart from '../Images/002-bar-chart.png'
 import docs from '../Images/003-docs.png'
@@ -38,7 +40,10 @@ class admin extends Component {
             Usernames: "",
             Mentions: "",
             Ubication: "",
-            Date: ""
+            Date: "",
+            change: false,
+            change1: false
+
 
 
         }
@@ -59,6 +64,22 @@ class admin extends Component {
 
     }
 
+    change() {
+        this.setState({
+            change: true,
+            change1: false
+        })
+    }
+
+    change1() {
+        this.setState({
+            change1: true,
+            change: false
+
+        })
+    }
+
+
 
 
 
@@ -66,20 +87,43 @@ class admin extends Component {
     render() {
         return (
             <div>
-                {/**
+                {/** 
+
 
                 <div id="mySidenav" className="sidenav">
                     <a href="javascript:void(0)" className="closebtn" onClick={this.closeNav.bind(this)}>&times;</a>
-                    <a href="#" onClick={this.home.bind(this)}>About</a>
-                    <a href="#">Services</a>
+                    <a href="#ho" onClick={this.change.bind(this)} >Home</a>
+
+                    <a href="#cha" onClick={this.change1.bind(this)} >Charts</a>
                     <a href="#">Clients</a>
                     <a href="#">Contact</a>
-                </div>
+                </div >
 
-                <h2>Animated Sidenav Example</h2>
-                <p>Click on the element below to open the side navigation menu.</p>
-                <span onClick={this.openNav.bind(this)} >&#9776; open</span>
-    **/}
+
+
+
+                <span className="menuSid" onClick={this.openNav.bind(this)} >&#9776; <h1 className="men">Menu</h1></span>
+
+                {
+
+                    this.state.change === true ? (
+                        <Home></Home>) : ("")
+
+
+                }
+
+
+                {
+
+                    this.state.change1 === true ? (
+                        <Charts></Charts>) : ("")
+
+
+                }
+
+                **/}
+
+                {/** 
 
 
                 <BrowserRouter>
@@ -149,8 +193,9 @@ class admin extends Component {
                         </React.Fragment>
                     )} />
                 </BrowserRouter>
-
+ */}
             </div>
+
         );
     }
 

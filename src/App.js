@@ -8,10 +8,10 @@ import Admin from './Components/Admin'
 function App() {
   return (
     <div className="App">
+
       <Navbar></Navbar>
 
       <Admin></Admin>
-
 
     </div>
   );

@@ -27,7 +27,6 @@ h5.Titlle {
         left: 0;
         z-index: 1006;
         height: 126%;
-
         min-width: 64px;
         background: #b2d2f3 !important;
         transition: min-width 0.15s;
@@ -72,7 +71,6 @@ h5.Titlle {
     .sidenav {
         padding-top: 15px;
     }
-
     .sidenav a {
         font-size: 18px;
     }

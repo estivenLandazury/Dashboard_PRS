@@ -14,3 +14,11 @@ h1.Social_title {
     margin-left: 6%;
     margin-top: 2;
 }
+
+@media (max-width: 800px) {
+    div#container-social {
+        width: auto !important;
+        margin-left: -5%;
+        margin-top: 1%;
+    }
+}

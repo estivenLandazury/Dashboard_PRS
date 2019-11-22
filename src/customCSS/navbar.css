@@ -1,5 +1,6 @@
 img.prescriptiva_logo {
     width: 9%;
+    margin-left: 2%;
 }
 
 button#user-date {
@@ -20,4 +21,31 @@ div#option {
 
 button#redirect {
     width: auto;
+}
+
+a.User.Name {
+    color: white;
+}
+
+hr.LineHr {
+    background: white;
+    width: 126%;
+    margin-left: -18%;
+}
+
+span.menuSid {
+    color: white;
+    font-size: 151%;
+}
+
+@media (max-width: 800px) {
+    img.prescriptiva_logo {
+        width: auto;
+        margin-left: 2%;
+    }
+    .navbar-light .navbar-toggler {
+        color: rgba(0, 0, 0, .5);
+        display: none;
+        border-color: rgba(0, 0, 0, .1);
+    }
 }

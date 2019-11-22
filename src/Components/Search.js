@@ -60,13 +60,14 @@ class search extends Component {
         console.log("REDUX STATE " + this.props.search1)
         console.log("REDUX Date " + this.state.startDate)
         console.log("REDUX Ubicacion " + this.state.Ubication)
-        const js = localStorage.getItem('datos');
-        const vl = JSON.parse(js)
-        console.log("dddddddddddddd" + js)
-
-        console.log("dddddddddddddd" + vl['hotmail'])
-
-
+        /*
+         const js = localStorage.getItem('datos');
+         const vl = JSON.parse(js)
+         console.log("dddddddddddddd" + js)
+ 
+         console.log("dddddddddddddd" + vl['hotmail'])
+ 
+ */
 
 
     }
@@ -293,7 +294,7 @@ class search extends Component {
 
         if (this.state.estado == false) {
 
-            return <div>
+            return <div className="container" >
                 <form>
                     <div className="form-group">
                         {/**<input type="email" className="form-control" id="exampleFormControlInput1" placeholder="KeyWord" /> */}
@@ -302,12 +303,11 @@ class search extends Component {
                     </div>
                     <button type="button" className="btn btn-primary" id="Search-button" onClick={this.sendInfo_1.bind(this)}>search</button>
                 </form>
-                <img src={add} className="buttonSearch_logo" id="add" /> <h5 className="keyWord" >New Key word</h5>
 
             </div>
         } else if (this.state.estado == true) {
 
-            return <div className="advancedSearch2">
+            return <div className="container">
                 <h1 className="Social_title2" id="advancedSearch"> Advanced search</h1>
 
                 <h1 className="Social_title" id="especifSearch"> Words</h1>
@@ -316,7 +316,7 @@ class search extends Component {
                 <form>
                     <div className="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label"> <h1 className="labelh1">search  </h1></label>
-                        <div className="col-sm-10">
+                        <div className="col-xl-10">
                             {/** <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" onChange={e => this.props.input1(e.target.value)} /> */}
                             <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" onChange={e => this.inputsearch(e)} />
                             {/** <input type="text" className="form-control" id="inputPassword" placeholder="keyWord" />*/}
@@ -359,7 +359,7 @@ class search extends Component {
                     <div className="form-group row">
                         <label for="inputPassword" className="col-sm-2 col-form-label"><h1 className="labelh1">Ubication</h1></label>
                         <div className="col-xl-10">
-                            <select className="form-control form-control-sm" id="selectWid" onChange={e => this.inputsearch3(e)} >
+                            <select type="text" className="form-control " id="selectWid" onChange={e => this.inputsearch3(e)} >
                                 <option >Antioquia</option>
                                 <option >Atlántico</option>
                                 <option > Bolívar</option>
@@ -411,6 +411,7 @@ class search extends Component {
                         <div className="col-md-4">
                             {this.campKey()}
                         </div>
+
                         <div className="col-md-4">
                             <img src={buttonSearch} className="buttonSearch_logo" onClick={this.search.bind(this)} />
                             <br>
@@ -420,6 +421,7 @@ class search extends Component {
 
 
                         </div>
+
 
                     </div>
                 </div>
