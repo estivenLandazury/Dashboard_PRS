@@ -81,7 +81,7 @@ class Register extends Component {
                 .then(response => response.json())
                 .then((responseJson) => {
 
-                    if (responseJson['Value'] === "succes") {
+                    if (responseJson['Value'] === "success") {
                         NotificationManager.success("Succes message", "Se ha registrado correctamente", 3000)
                         console.log("este es response fff " + responseJson['state'])
 
