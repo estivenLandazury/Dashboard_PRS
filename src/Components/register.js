@@ -84,8 +84,10 @@ class Register extends Component {
                     if (responseJson['Value'] === "success") {
                         NotificationManager.success("Succes message", "Se ha registrado correctamente", 3000)
                         console.log("este es response fff " + responseJson['state'])
+                        setTimeout(() => {
+                            window.location.href = '/login'
+                        }, 3000)
 
-                        window.location.href = '/login'
 
 
 
