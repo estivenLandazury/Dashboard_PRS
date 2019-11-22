@@ -17,9 +17,8 @@ class report extends Component {
         this.state = {
 
 
-            URL: "http://172.19.15.30:5002/get-csv/",
-            URL1: "http://172.19.15.30:5002/",
-
+            URL: "http://192.168.96.37:5002/get-csv/",
+            URL1: "http://192.168.96.37:5002/",
             file: "file",
             json: [{}],
 
@@ -30,12 +29,12 @@ class report extends Component {
     }
 
     componentDidMount() {
-        /*
-         const js = localStorage.getItem('datos');
-         const vl = JSON.parse(js)
-         console.log("jjjjjj " + vl['nombre'])
-         this.obtainUrls()
- */
+
+        const js = localStorage.getItem('datos');
+        const vl = JSON.parse(js)
+        console.log("jjjjjj " + vl['nombre'])
+        this.obtainUrls()
+
     }
 
 
@@ -152,7 +151,7 @@ class report extends Component {
                                     <tr key={index}>
                                         <th scope="row">{index}</th>
                                         <td>{cand["url"]}</td>
-                                        <td>{cand["Fecha Generado"]}</td>
+                                        <td>{cand["fecha"]}</td>
                                         <td> < a href={this.state.URL + cand["url"]} role="button" > Link</a >
                                         </td>
                                         <td>{cand["Dibujar Grafica"]}</td>

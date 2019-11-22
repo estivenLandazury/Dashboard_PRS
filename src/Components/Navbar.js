@@ -72,12 +72,12 @@ class navbar extends Component {
     }
 
     render() {
-        /*
+        
                 const js = localStorage.getItem('datos');
                 const vl = JSON.parse(js)
                 console.log("conversion " + vl)
                 console.log("storage" + vl['nombre'])
-        */
+        
         return (
 
             <div>
@@ -117,7 +117,7 @@ class navbar extends Component {
                         <form className="form-inline my-2 my-lg-0">
                             <div class="dropdown">
                                 <button className="btn btn-primary dropdown-toggle" id="user-date" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Steven Landazury  {/***  {vl['nombre'].trim()}*/}
+                                      {vl['nombre'].trim()}
                                 </button>
 
                                 <div className="dropdown-menu" id="option" aria-labelledby="dropdownMenuButton">

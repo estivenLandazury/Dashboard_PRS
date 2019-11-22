@@ -20,8 +20,7 @@ class Register extends Component {
 
 
         this.state = {
-            URL: "http://172.19.15.21:5000/"
-
+            URL: "http://192.168.96.37:5002/"
 
         }
     }

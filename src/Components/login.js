@@ -22,7 +22,7 @@ class login extends Component {
 
 
         this.state = {
-            URL: "http://172.19.15.30:5002/",
+            URL: "http://192.168.96.37:5002/",
             login: false
 
 
@@ -158,8 +158,8 @@ class login extends Component {
 
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <button type="button" id="redirect" className="btn btn-primary" value="Log In"> Upload File</button>
-
+                                <a href="http://192.168.96.37:3000">                                 <button type="button" id="redirect" className="btn btn-primary" value="Log In"> Upload File</button>
+                                </a>
 
                             </form>
                         </div>

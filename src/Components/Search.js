@@ -37,8 +37,8 @@ class search extends Component {
 
             estado: true,
             startDate: new Date(),
-            /* URL: "http://192.168.96.37:5002/",*/
-            URL: "http://172.19.15.30:5002/",
+            URL: "http://192.168.96.37:5002/",
+            /*URL: "http://172.19.15.30:5002/",*/
 
             loader: true,
 
@@ -194,7 +194,7 @@ class search extends Component {
         let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "", "correo": vl['hotmail'] }
 
         this.props.cambiarLoader(true)
-
+        const that = this
 
         let options = {
             method: 'POST',
@@ -221,7 +221,7 @@ class search extends Component {
 
             }).catch(function (error) {
                 NotificationManager.error("Error message", "Connection error verify server", 5000)
-                this.props.cambiarLoader(false)
+                that.props.cambiarLoader(false)
                 console.log("Opa vv")
 
             }
@@ -236,6 +236,7 @@ class search extends Component {
     sendInfo() {
         const js = localStorage.getItem('datos');
         const vl = JSON.parse(js)
+        const that = this
 
         console.log("hashtagBusqueda send info " + this.state.Hashtags)
         console.log("palabra busqueda sen info " + this.props.search)
@@ -263,17 +264,16 @@ class search extends Component {
 
                 console.log("este es response " + responseJson)
 
-                NotificationManager.error("Error message", "No se ha logrado Compleytar el analisis", 5000)
+                NotificationManager.success("Succes message", "Se completó el analisis", 5000)
                 this.props.cambiarLoader(false)
 
 
 
 
 
-
-            }).catch(function (error) {
+            }).catch(function (error, ) {
                 NotificationManager.error("Error message", "Connection error verify server", 5000)
-                this.props.cambiarLoader(false)
+                that.props.cambiarLoader(false)
                 console.log("Opa vv")
 
             }
