@@ -83,10 +83,22 @@ class Register extends Component {
 
                     if (responseJson['Value'] === "succes") {
                         NotificationManager.success("Succes message", "Se ha registrado correctamente", 3000)
+                        console.log("este es response fff " + responseJson['state'])
+
                         window.location.href = '/login'
 
 
+
+
+                    }
+
+
+                    if (responseJson['Value'] === "exist") {
+                        NotificationManager.warning("Warning message", "el usuario ya se encuentra registrado", 3000)
                         console.log("este es response fff " + responseJson['state'])
+
+
+
 
 
                     }
