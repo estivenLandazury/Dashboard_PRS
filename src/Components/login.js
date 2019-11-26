@@ -106,7 +106,11 @@ class login extends Component {
                     if (responseJson['state'] === "Failed") {
                         NotificationManager.warning("Warning Message", 'La información ingresada no es correcta', 4000)
 
+                        this.setState({
+                            login: false
 
+
+                        })
                     }
 
                     console.log("este es response " + responseJson['state'])
