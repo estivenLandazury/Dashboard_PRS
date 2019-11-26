@@ -17,8 +17,8 @@ class report extends Component {
         this.state = {
 
 
-            URL: "http://192.168.96.37:5002/get-csv/",
-            URL1: "http://192.168.96.37:5002/",
+            URL: "http://34.238.51.175:5002/get-csv/",
+            URL1: "http://34.238.51.175:5002/",
             file: "file",
             json: [{}],
 

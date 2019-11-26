@@ -37,7 +37,7 @@ class search extends Component {
 
             estado: true,
             startDate: new Date(),
-            URL: "http://192.168.96.37:5002/",
+            URL: "http://34.238.51.175:5002/",
             /*URL: "http://172.19.15.30:5002/",*/
 
             loader: true,
