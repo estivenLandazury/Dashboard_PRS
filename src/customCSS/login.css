@@ -334,7 +334,7 @@ h1.load_sign {
         border-radius: 10px 10px 10px 10px;
         background: #fff;
         padding: 30px;
-        width: auto;
+        width: auto !important;
         max-width: 450px;
         position: relative;
         padding: 0px;
@@ -346,6 +346,15 @@ h1.load_sign {
         background-color: #041160;
         border-color: #041160;
         width: auto;
+    }
+    .container {
+        margin-top: 13%;
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        max-width: fit-content;
     }
 }
 
