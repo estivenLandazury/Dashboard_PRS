@@ -329,7 +329,7 @@ h1.load_sign {
 @media (max-width: 800px) {
     #formContent {
         -webkit-border-radius: 10px 10px 10px 10px;
-        margin-left: 14%;
+        margin-left: auto;
         margin-top: 8%;
         border-radius: 10px 10px 10px 10px;
         background: #fff;

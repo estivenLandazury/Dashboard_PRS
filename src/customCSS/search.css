@@ -149,13 +149,37 @@ h1.Loader {
     color: #041160;
 }
 
+.modal-content {
+    text-align: center;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .3rem;
+    outline: 0;
+}
+
+h1.title_body {
+    font-size: 128%;
+    color: #1e1e45;
+    font-weight: bold;
+}
+
+/*
 .loader {
     z-index: 1;
     position: absolute;
     margin-top: -71%;
-    /* float: right; */
+    
     margin-left: 132%;
 }
+*/
 
 @media (max-width: 1024px) {
     div#search-container {
@@ -293,5 +317,11 @@ h1.Loader {
         float: left;
         background-color: #041160;
         border-color: white;
+    }
+}
+
+@media (max-width: 412px) {
+    div#container-social {
+        display: none;
     }
 }

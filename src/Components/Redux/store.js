@@ -36,7 +36,10 @@ const stateInitial = {
         'Tweet mas Fv': "",
         'Promedio Favorito': 1,
         'Hashtags populares': [],
-        'Menciones populares': ""
+        'Menciones populares': "",
+        'Trama': "",
+        'Archivo': "",
+        'Fecha': ""
     }
 }
 

@@ -45,7 +45,7 @@ class charts extends Component {
         };
 
         return <div>
-            <h2 className="titleGraphic">Trend Analysis {this.props.search}</h2>
+            <h2 className="titleGraphic">Trend Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
             <Bar
                 data={data}
                 width={100}
@@ -75,7 +75,7 @@ class charts extends Component {
         };
 
         return <div>
-            <h2 className="titleGraphic">Favorite Analysis {this.props.search}</h2>
+            <h2 className="titleGraphic">Favorite Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
             <Radar data={data} />
         </div>
 
@@ -115,7 +115,7 @@ class charts extends Component {
         };
 
         return <div>
-            <h2 className="titleGraphic">RTweet Analysis {this.props.search}</h2>
+            <h2 className="titleGraphic">RTweet Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
             <Line data={data} />
         </div>
     }
@@ -147,7 +147,7 @@ class charts extends Component {
 
         return <div>
             <h2 className="titleGraphic">
-                Acceptance Analysis {this.props.search}</h2>
+                Acceptance Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
             <Doughnut data={data} />
         </div>
     }

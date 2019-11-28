@@ -55,11 +55,12 @@ class login extends Component {
 
 
     verificarusuario() {
+        const that = this
 
 
         if (this.props.password === "" || this.props.correo === "") {
 
-            NotificationManager.warning("Warning Message", 'Ingrese La información en todos los campos', 4000)
+            NotificationManager.warning("Warning Message", 'Enter the information in all fields', 4000)
 
 
         } else if (this.props.password !== "" || this.props.correo !== "") {
@@ -104,7 +105,7 @@ class login extends Component {
 
 
                     if (responseJson['state'] === "Failed") {
-                        NotificationManager.warning("Warning Message", 'La información ingresada no es correcta', 4000)
+                        NotificationManager.warning("Warning Message", 'The information entered is not correct', 4000)
 
                         this.setState({
                             login: false
@@ -117,7 +118,12 @@ class login extends Component {
 
 
                 }).catch(function (error) {
-                    NotificationManager.error("Warning error", 'Error de Servidor', 4000)
+                    NotificationManager.error("Warning error", 'Server Error', 4000)
+                    that.setState({
+                        login: false
+
+
+                    })
 
 
                 })
@@ -162,7 +168,7 @@ class login extends Component {
 
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <a href="#">                                 <button type="button" id="redirect" className="btn btn-primary" value="Log In"> Upload File</button>
+                                <a href="http://prescriptiva-uploadfile.s3-website-us-east-1.amazonaws.com/">  <button type="button" id="redirect" className="btn btn-primary" value="Log In"> Upload File</button>
                                 </a>
 
                             </form>
@@ -183,7 +189,7 @@ class login extends Component {
 
                         <form>
                             <h1 className="title-login">Login</h1>
-                            <input type="text" id="login" className="fadeIn second" name="login" placeholder="hotmail" onChange={e => this.onChangeCorreo(e)} />
+                            <input type="text" id="login" className="fadeIn second" name="login" placeholder="email" onChange={e => this.onChangeCorreo(e)} />
                             <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" onChange={e => this.onChangePassword(e)} />
                             <button type="button" id="fadeIn fourth" className="btn btn-primary" value="Log In" onClick={this.verificarusuario.bind(this)}> Sign in</button>
                             <button type="button" id="fadeInfourt" className="btn btn-primary" onClick={this.pageRegister.bind(this)} > Sign up</button>

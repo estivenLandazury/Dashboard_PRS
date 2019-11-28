@@ -19,6 +19,7 @@ class report extends Component {
 
             URL: "http://34.238.51.175:5002/get-csv/",
             URL1: "http://34.238.51.175:5002/",
+            URL2: "http://34.238.51.175:5002/get-json/",
             file: "file",
             json: [{}],
 
@@ -94,6 +95,7 @@ class report extends Component {
             .then(response => response.json())
             .then((responseJson) => {
 
+
                 console.log("este es response " + responseJson)
 
 
@@ -113,6 +115,43 @@ class report extends Component {
   */}
 
         </div>
+    }
+
+
+    drauGraphic(filename) {
+
+        console.log("nombre de archivo " + filename)
+
+
+
+        let options = {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+        }
+
+
+        fetch(this.state.URL2 + filename, options)
+            .then(response => response.json())
+            .then((responseJson) => {
+
+
+                this.props.IndicesGrafica(responseJson, false)
+                NotificationManager.success("Success message", "The data can be visualized in the graphs", 5000)
+
+                console.log("este es response del drwaGraphic " + responseJson)
+
+
+            }).catch(function (error) {
+                NotificationManager.error("Error message", "Connection error verify server", 5000)
+
+            }
+            )
+
+
     }
 
 
@@ -154,7 +193,7 @@ class report extends Component {
                                         <td>{cand["fecha"]}</td>
                                         <td> < a href={this.state.URL + cand["url"]} role="button" > Link</a >
                                         </td>
-                                        <td>{cand["Dibujar Grafica"]}</td>
+                                        <td><button type="button" onClick={this.drauGraphic.bind(this, cand["url"])} className="btn btn-link"> Draw Graphic</button></td>
 
                                     </tr>
                                 )
@@ -191,7 +230,18 @@ const mapDispatchToProps = dispactch => ({
 
         })
 
-    }
+    },
+
+
+    IndicesGrafica(e, v) {
+        dispactch({
+            type: "INDICE_GRAFICA",
+            input: e,
+            camb: v
+
+        })
+
+    },
 
 })
 

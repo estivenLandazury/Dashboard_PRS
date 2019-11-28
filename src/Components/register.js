@@ -82,7 +82,7 @@ class Register extends Component {
                 .then((responseJson) => {
 
                     if (responseJson['Value'] === "success") {
-                        NotificationManager.success("Succes message", "Se ha registrado correctamente", 3000)
+                        NotificationManager.success("Succes message", "You have successfully registered", 3000)
                         console.log("este es response fff " + responseJson['state'])
                         setTimeout(() => {
                             window.location.href = '/login'
@@ -96,7 +96,7 @@ class Register extends Component {
 
 
                     if (responseJson['Value'] === "exist") {
-                        NotificationManager.warning("Warning message", "el usuario ya se encuentra registrado", 3000)
+                        NotificationManager.warning("Warning message", "the user is already registered", 3000)
                         console.log("este es response fff " + responseJson['state'])
 
 
@@ -107,19 +107,20 @@ class Register extends Component {
 
                     console.log("este es response " + responseJson['Value'])
 
-                }).catch(error => console.log("Hola bb"))
+                }).catch(error => NotificationManager.error("Error message", "Server error", 3000)
+                )
 
 
         } else if (password !== password1) {
 
-            NotificationManager.warning("Warning Message", 'La contraseña ingresada no es igual en ambos campos', 4000)
+            NotificationManager.warning("Warning Message", 'The password entered is not the same in both fields', 4000)
 
 
         }
 
         if (nombre === "" || correo === "" || password === "" || password1 === "") {
 
-            NotificationManager.warning("Warning Message", 'Ingrese La información en todos los campos', 4000)
+            NotificationManager.warning("Warning Message", 'Enter the information in all fields', 4000)
 
         }
 
@@ -158,8 +159,8 @@ class Register extends Component {
 
                             </ul>
                             <form className="form-inline my-2 my-lg-0">
-                                <button type="button" id="redirect" className="btn btn-primary" value="Log In" > Upload File</button>
-
+                                <a href="http://prescriptiva-uploadfile.s3-website-us-east-1.amazonaws.com/">  <button type="button" id="redirect" className="btn btn-primary" value="Log In"> Upload File</button>
+                                </a>
 
                             </form>
                         </div>
@@ -180,7 +181,7 @@ class Register extends Component {
                             <h1 className="title-login">Sign Up</h1>
                             <input type="text" id="login" className="fadeIn second" name="login" placeholder="name" onChange={e => this.onChangeNombre(e)} />
 
-                            <input type="text" id="login1" className="fadeIn second" name="login" placeholder="hotmail" onChange={e => this.onChangeCorreo(e)} />
+                            <input type="text" id="login1" className="fadeIn second" name="login" placeholder="email" onChange={e => this.onChangeCorreo(e)} />
 
 
                             <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" onChange={e => this.onChangePassword(e)} />

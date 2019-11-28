@@ -11,7 +11,7 @@ import Loader from 'react-loader-spinner'
 
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
-
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 /** ----Importaciones de REDUX---- */
 import { Provider } from "react-redux"
 import Store from "../Components/Redux/store"
@@ -47,6 +47,9 @@ class search extends Component {
             /** Data search advanced */
             /*search: "sdf",*/
             Hashtags: "",
+            open: false,
+            modalIsopen: false,
+            showDetails: false,
             Usernames: "",
             Ubication: "",
             Date: ""
@@ -57,6 +60,7 @@ class search extends Component {
 
 
     componentDidMount() {
+
         console.log("REDUX STATE " + this.props.search1)
         console.log("REDUX Date " + this.state.startDate)
         console.log("REDUX Ubicacion " + this.state.Ubication)
@@ -184,48 +188,83 @@ class search extends Component {
 
 
 
+    onOpenModal = () => {
+        this.setState({ open: true });
+    };
+
+    onCloseModal = () => {
+        this.setState({ open: false });
+    };
+
+
+
+
+    toggleModal = value => {
+        this.setState({
+            modalIsopen: !this.state.modalIsopen
+        });
+
+
+    }
+
+
+
 
     sendInfo_1() {
-        console.log("hashtagBusqueda send info " + this.state.Hashtags)
-        console.log("palabra busqueda sen info " + this.props.search)
-        const js = localStorage.getItem('datos');
-        const vl = JSON.parse(js)
+        if (this.props.search !== "") {
+            console.log("hashtagBusqueda send info " + this.state.Hashtags)
+            console.log("palabra busqueda sen info " + this.props.search)
+            const js = localStorage.getItem('datos');
+            const vl = JSON.parse(js)
 
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "", "correo": vl['hotmail'] }
-
-        this.props.cambiarLoader(true)
-        const that = this
-
-        let options = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
-
-
-        fetch(this.state.URL + "pedir", options)
-            .then(response => response.json())
-            .then((responseJson) => {
-
-
-                this.props.IndicesGrafica(responseJson, false)
-                NotificationManager.success("Success message", "Se ha generado el reporte correctamente", 5000)
+            let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": "", "usuarioBusqueda": "", "fechaMinBusqueda": "", "cercaniaBusqueda": "", "correo": vl['hotmail'] }
 
 
 
 
 
 
-            }).catch(function (error) {
-                NotificationManager.error("Error message", "Connection error verify server", 5000)
-                that.props.cambiarLoader(false)
-                console.log("Opa vv")
 
+            this.props.cambiarLoader(true)
+            this.onOpenModal();
+            const that = this
+
+            let options = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             }
-            )
+
+
+            fetch(this.state.URL + "pedir", options)
+                .then(response => response.json())
+                .then((responseJson) => {
+
+
+                    this.props.IndicesGrafica(responseJson, false)
+                    NotificationManager.success("Success message", "The data can be visualized in the graphs", 5000)
+
+
+
+
+
+
+                }).catch(function (error) {
+                    NotificationManager.error("Error message", "Connection error verify server", 5000)
+                    that.props.cambiarLoader(false)
+                    console.log("Opa vv")
+
+                }
+                )
+
+        } else if (this.props.search === "") {
+            NotificationManager.warning("Warning message", "Enter the search data", 5000)
+
+
+        }
 
     }
 
@@ -234,54 +273,63 @@ class search extends Component {
 
 
     sendInfo() {
-        const js = localStorage.getItem('datos');
-        const vl = JSON.parse(js)
-        const that = this
 
-        console.log("hashtagBusqueda send info " + this.state.Hashtags)
-        console.log("palabra busqueda sen info " + this.props.search)
-
-        let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication, "correo": vl['hotmail'] }
-
-        this.props.cambiarLoader(true)
-
-        let options = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }
+        if (this.props.search !== "" || this.state.Hashtags !== "" || this.state.Usernames !== "") {
 
 
-        fetch(this.state.URL + "pedir", options)
-            .then(response => response.json())
-            .then((responseJson) => {
+            const js = localStorage.getItem('datos');
+            const vl = JSON.parse(js)
+            const that = this
 
+            console.log("hashtagBusqueda send info " + this.state.Hashtags)
+            console.log("palabra busqueda sen info " + this.props.search)
 
+            let data = { "palabraBusqueda": this.props.search, "hashtagBusqueda": this.state.Hashtags, "usuarioBusqueda": this.state.Usernames, "fechaMinBusqueda": this.props.Date, "cercaniaBusqueda": this.state.Ubication, "correo": vl['hotmail'] }
 
+            this.props.cambiarLoader(true)
+            this.onOpenModal()
 
-                console.log("este es response " + responseJson)
-
-                NotificationManager.success("Succes message", "Se completó el analisis", 5000)
-                this.props.cambiarLoader(false)
-
-
-
-
-
-            }).catch(function (error, ) {
-                NotificationManager.error("Error message", "Connection error verify server", 5000)
-                that.props.cambiarLoader(false)
-                console.log("Opa vv")
-
+            let options = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
             }
 
-                /**    NotificationManager.error("Error message", "Connection error verify server", 5000),
-                  */
 
-            )
+            fetch(this.state.URL + "pedir", options)
+                .then(response => response.json())
+                .then((responseJson) => {
+
+
+
+
+                    console.log("este es response " + responseJson)
+                    this.props.IndicesGrafica(responseJson, false)
+
+
+                    NotificationManager.success("Succes message", "The data can be visualized in the graphs", 5000)
+                    this.props.cambiarLoader(false)
+
+
+                }).catch(function (error, ) {
+                    NotificationManager.error("Error message", "Connection error verify server", 5000)
+                    that.props.cambiarLoader(false)
+                    console.log("Opa vv")
+
+                }
+
+                    /**    NotificationManager.error("Error message", "Connection error verify server", 5000),
+                      */
+
+                )
+        } else if (this.props.search === "" && this.state.Hashtags === "" && this.state.Usernames === "") {
+            NotificationManager.warning("Warning message", "Enter the search data", 3000)
+
+
+        }
 
 
     }
@@ -396,14 +444,42 @@ class search extends Component {
                 <div className="ChartsModule" style={{ display: 'none' }}>
                 </div>
 
+
+
+
             </div>
         }
     }
 
+
+
+
+
     render() {
+
+
+
         return (
 
             <div>
+
+                <Modal isOpen={this.state.open}>
+                    <ModalHeader >Análisis</ModalHeader>
+                    <ModalBody>
+                        <h1 className="title_body">We are finishing the analysis please wait a moment, at the end of the process you will be notified</h1>
+                        {this.loader()}
+
+                    </ModalBody>
+
+                    <ModalFooter>
+
+                        <Button color="secondary" onClick={this.onCloseModal}>Understood</Button>
+                    </ModalFooter>
+
+                </Modal>
+
+
+
                 <NotificationContainer></NotificationContainer>
 
                 <div className="container" id="search-container">
@@ -427,6 +503,8 @@ class search extends Component {
                 </div>
 
                 {this.loader()}
+
+
 
 
 
