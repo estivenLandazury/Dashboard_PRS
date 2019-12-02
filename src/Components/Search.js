@@ -246,6 +246,8 @@ class search extends Component {
 
                     this.props.IndicesGrafica(responseJson, false)
                     NotificationManager.success("Success message", "The data can be visualized in the graphs", 5000)
+                    this.onCloseModal()
+
 
 
 
@@ -311,7 +313,11 @@ class search extends Component {
 
 
                     NotificationManager.success("Succes message", "The data can be visualized in the graphs", 5000)
+
                     this.props.cambiarLoader(false)
+                    this.onCloseModal()
+
+
 
 
                 }).catch(function (error, ) {
@@ -381,7 +387,7 @@ class search extends Component {
                     <div className="form-group row">
                         <label for="inputPassword" className="col-sm-2 col-form-label"> <h1 className="labelh1">Hashtags</h1></label>
                         <div className="col-xl-10">
-                            <input type="text" className="form-control" id="inputPassword2" placeholder="#votoElectrónico" onChange={e => this.inputsearch1(e)} />
+                            <input type="text" className="form-control" id="inputPassword2" placeholder="#search by hashtag" onChange={e => this.inputsearch1(e)} />
                         </div>
                     </div>
 
@@ -391,7 +397,7 @@ class search extends Component {
                     <div className="form-group row">
                         <label for="inputPassword" className="col-sm-2 col-form-label"><h1 className="labelh1">Usernames </h1> </label>
                         <div className="col-xl-10">
-                            <input type="text" className="form-control" id="inputPassword3" placeholder="Claudia Lopez" onChange={e => this.inputsearch2(e)} />
+                            <input type="text" className="form-control" id="inputPassword3" placeholder="search by name" onChange={e => this.inputsearch2(e)} />
                         </div>
                     </div>
 
@@ -402,7 +408,7 @@ class search extends Component {
                         </div>
                     </div>  */}
 
-                    <h1 className="Title-person">Location</h1>
+                    <h1 className="Title-person"> Search by Location</h1>
 
                     <div className="form-group row">
                         <label for="inputPassword" className="col-sm-2 col-form-label"><h1 className="labelh1">Ubication</h1></label>
@@ -464,7 +470,7 @@ class search extends Component {
             <div>
 
                 <Modal isOpen={this.state.open}>
-                    <ModalHeader >Análisis</ModalHeader>
+                    <ModalHeader >Analysis</ModalHeader>
                     <ModalBody>
                         <h1 className="title_body">We are finishing the analysis please wait a moment, at the end of the process you will be notified</h1>
                         {this.loader()}
@@ -473,7 +479,7 @@ class search extends Component {
 
                     <ModalFooter>
 
-                        <Button color="secondary" onClick={this.onCloseModal}>Understood</Button>
+                        <Button color="secondary" onClick={this.onCloseModal}>Ok</Button>
                     </ModalFooter>
 
                 </Modal>

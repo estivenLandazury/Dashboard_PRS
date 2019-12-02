@@ -35,6 +35,7 @@ class navbar extends Component {
             change2: false
 
         })
+        this.closeNav()
     }
 
     change1() {
@@ -45,6 +46,8 @@ class navbar extends Component {
 
 
         })
+        this.closeNav()
+
     }
 
     change2() {
@@ -55,6 +58,8 @@ class navbar extends Component {
 
 
         })
+        this.closeNav()
+
     }
 
     openNav() {

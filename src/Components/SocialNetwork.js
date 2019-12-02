@@ -37,7 +37,7 @@ class SocialNetwork extends Component {
                 <div className="conta" id="container-social">
                     <div className="row">
                         <div className="col-md-4">
-                            <img src={instagram} className="social_logo" />
+                            <img src={instagram} className="social_logo_i" />
                         </div>
                         <div className="col-md-4">
                             <img src={twitter} className="social_logo" />
@@ -45,19 +45,19 @@ class SocialNetwork extends Component {
                         </div>
                         <div className="w-60"></div>
                         <div className="col-md-4">
-                            <img src={facebook} className="social_logo" />
+                            <img src={facebook} className="social_logo_i" />
 
                         </div>
                         <div className="col-md-4">
-                            <img src={forum} className="social_logo" />
+                            <img src={forum} className="social_logo_i" />
                         </div>
                         <div className="w-60"></div>
                         <div className="col-md-4">
-                            <img src={youtube} className="social_logo" />
+                            <img src={youtube} className="social_logo_i" />
 
                         </div>
                         <div className="col-md-4" >
-                            <img src={linkedlink} className="social_logo" />
+                            <img src={linkedlink} className="social_logo_i" />
 
                         </div>
                     </div>

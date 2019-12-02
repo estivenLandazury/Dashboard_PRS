@@ -5,6 +5,7 @@ import App from './App';
 import Login from './Components/login'
 import Admin from './Components/Admin'
 import Home from './Components/Home'
+import Chart from './Components/Charts'
 
 import Register from './Components/register'
 import * as serviceWorker from './serviceWorker';

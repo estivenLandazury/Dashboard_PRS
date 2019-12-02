@@ -140,7 +140,8 @@ class report extends Component {
 
 
                 this.props.IndicesGrafica(responseJson, false)
-                NotificationManager.success("Success message", "The data can be visualized in the graphs", 5000)
+                NotificationManager.success("Success message", "The data can be visualized in the graphs", 6000)
+
 
                 console.log("este es response del drwaGraphic " + responseJson)
 

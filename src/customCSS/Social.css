@@ -4,6 +4,10 @@ div#container-social {
     margin-top: 1%;
 }
 
+img.social_logo_i {
+    opacity: 0.5;
+}
+
 h1.Social_title {
     /* background: red; */
     width: 73%;

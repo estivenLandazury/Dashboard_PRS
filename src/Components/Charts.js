@@ -21,16 +21,15 @@ class charts extends Component {
     }
 
     componentDidMount() {
-        console.log("hola he llegado " + this.props.search)
 
     }
 
     bar() {
         const data = {
-            labels: ['Muy positivo',
-                'Tendencia positiva',
-                'Tendencia negativa',
-                'Muy negativo'],
+            labels: ['Very positive',
+                'Positive trend',
+                'Negative trend',
+                'Very negative'],
             datasets: [
                 {
                     label: 'My First dataset',
@@ -58,11 +57,14 @@ class charts extends Component {
 
     radar() {
         const data = {
-            labels: ['Favorito Muy Positivo', 'Favorito Tendencia positiva', 'Favorito Tendencia Negativa', 'Favorito Muy Negativo'],
+            labels: ['Very Positive Favorite',
+                'Favorite Positive Trend',
+                'Favorite Negative Trend',
+                'Favorite Very Negative'],
             datasets: [
 
                 {
-                    label: 'Data Tweet',
+                    label: 'Data Favorite',
                     backgroundColor: 'rgba(255,99,132,0.2)',
                     borderColor: 'rgba(255,99,132,1)',
                     pointBackgroundColor: 'rgba(255,99,132,1)',
@@ -85,10 +87,10 @@ class charts extends Component {
 
     line() {
         const data = {
-            labels: ['RT Muy positivo',
-                'Rt Tendencia Positiva',
-                'Rt Tendencia Negativa',
-                'Rt Muy negativos'],
+            labels: ['RT Very positive',
+                'Rt Positive trend',
+                'Rt Negative trend',
+                'RtVery negative'],
             datasets: [
                 {
                     label: 'My First dataset',
@@ -115,7 +117,7 @@ class charts extends Component {
         };
 
         return <div>
-            <h2 className="titleGraphic">RTweet Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
+            <h2 className="titleGraphic">ReTweet Analysis {this.props.json['Archivo'].split(".")[0]}</h2>
             <Line data={data} />
         </div>
     }
@@ -123,10 +125,10 @@ class charts extends Component {
     Doughnut() {
         const data = {
             labels: [
-                'Muy positivo',
-                'Tendencia positiva',
-                'Tendencia negativa',
-                'Muy negativo'
+                'Very positive',
+                'Positive trend',
+                'Negative trend',
+                'Very negative'
             ],
             datasets: [{
                 data: [this.props.json["Muy positivo"], this.props.json["Tendencia positiva"], this.props.json["Tendencia negativa"], this.props.json["Muy negativo"]],
