@@ -55,6 +55,9 @@ class Register extends Component {
     }
 
 
+    /** Este método permite registrar a un usuario en la base de datos de presscritiva
+     */
+
     register() {
         let password = this.props.password
         let password1 = this.props.password1
@@ -130,6 +133,8 @@ class Register extends Component {
 
 
     }
+
+    /** Este método permite  dirigirme de nuevo a la página de Login una vez se registre un usuario */
 
     volver() {
         window.location.href = '/login'

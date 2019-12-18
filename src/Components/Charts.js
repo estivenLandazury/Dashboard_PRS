@@ -24,6 +24,9 @@ class charts extends Component {
 
     }
 
+
+    /** Pinta en grafica de barras la información que se obtuvo de la busqueda avanzada y simple */
+
     bar() {
         const data = {
             labels: ['Very positive',
@@ -55,6 +58,8 @@ class charts extends Component {
         </div>
     }
 
+    /** Pinta la información en una grafica de radar para mostar la informcación */
+
     radar() {
         const data = {
             labels: ['Very Positive Favorite',
@@ -84,7 +89,7 @@ class charts extends Component {
     }
 
 
-
+    /** Pinta en  una gráfica de barras la información que se obtuvo de la busqueda avanzada y simple */
     line() {
         const data = {
             labels: ['RT Very positive',
@@ -122,6 +127,8 @@ class charts extends Component {
         </div>
     }
 
+
+    /** Pinta en  una gráfica de barras la información que se obtuvo de la busqueda avanzada y simple */
     Doughnut() {
         const data = {
             labels: [

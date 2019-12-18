@@ -17,9 +17,9 @@ class report extends Component {
         this.state = {
 
 
-            URL: "http://34.238.51.175:5002/get-csv/",
+            URL: "http://34.238.51.175:5002/get-csv/", /** Permite descargar un archivo csv  que contiene la información obtenida de las busquedas avanzada y simple */
             URL1: "http://34.238.51.175:5002/",
-            URL2: "http://34.238.51.175:5002/get-json/",
+            URL2: "http://34.238.51.175:5002/get-json/", /** Permite obtener un json que contiene la información de los reportes consultados anteriormente */
             file: "file",
             json: [{}],
 
@@ -38,6 +38,9 @@ class report extends Component {
 
     }
 
+
+
+    /** Este método permite  establecer una url por reporte consultado para que pueda ser descargado */
 
     obtainUrls() {
         const js = localStorage.getItem('datos');
@@ -118,6 +121,11 @@ class report extends Component {
     }
 
 
+
+    /** Este método permite dibujar de nuevo en las gráficas los reportes consultados anteriormente  
+     * @param: filename, es el nombre del archivo que se creó en el momento de la busqueda y con éste se obtiene toda l ainformación del mismo
+     *
+     */
     drauGraphic(filename) {
 
         console.log("nombre de archivo " + filename)

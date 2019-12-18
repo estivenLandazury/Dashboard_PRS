@@ -52,8 +52,7 @@ class login extends Component {
 
 
 
-
-
+/** Este método verifica si el usuario ya se encuentra registrado en la base de datos y de ser asi permite el ingreso a la plataforma */
     verificarusuario() {
         const that = this
 
@@ -132,8 +131,6 @@ class login extends Component {
 
 
     }
-
-
 
 
 

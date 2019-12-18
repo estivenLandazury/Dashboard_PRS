@@ -142,6 +142,9 @@ class search extends Component {
     }
 
 
+
+    /** Este metodo permite realizar un busqueda sencilla por labra ingresada en el campo correspondiente  */
+
     search() {
         this.setState({
             estado: false
@@ -149,6 +152,9 @@ class search extends Component {
 
         console.log(this.state.estado)
     }
+
+    /** Este metodo permite realizar un busqueda avanzada  por las palabras ingresadas en los campos correspondientes */
+
 
     searchAdvanced() {
         this.setState({
@@ -163,6 +169,9 @@ class search extends Component {
         return <div>  </div>
 
     }
+
+
+    /** Loader que se encarga de mostrar un imagen que indica que el proceso esta cargando */
 
     loader() {
 
@@ -208,7 +217,7 @@ class search extends Component {
     }
 
 
-
+    /** Este metodo consume el servicio d ela función de busqueda simple y obtiene un json con  los indices corresppondientes a la busqueda */
 
     sendInfo_1() {
         if (this.props.search !== "") {
@@ -272,7 +281,7 @@ class search extends Component {
 
 
 
-
+    /** Este metodo consume el servicio d ela función de busqueda avanzada  y obtiene un json con  los indices corresppondientes a la busqueda avanzada  */
 
     sendInfo() {
 
@@ -342,9 +351,13 @@ class search extends Component {
 
 
 
+    /**  Este metodo Renderiza los formularios de buisqueda avanzada y simple según elk estado si es verdadero o falso */
+
 
 
     campKey() {
+
+        /** Renderiza la busqueda simple, si el estado es falso */
 
         if (this.state.estado == false) {
 
@@ -359,6 +372,9 @@ class search extends Component {
                 </form>
 
             </div>
+
+            /** Renderiza la busqueda avanzada, si el estado es  verdadera */
+
         } else if (this.state.estado == true) {
 
             return <div className="container">
